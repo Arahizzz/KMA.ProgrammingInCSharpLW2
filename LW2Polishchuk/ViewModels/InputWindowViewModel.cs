@@ -122,7 +122,6 @@
 
         private string GetAgeInfo()
         {
-            var now = DateTime.Now;
             string isBirthday = Person.IsBirthday
                 ? "Happy Birthday!🎂\n"
                 : string.Empty;

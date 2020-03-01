@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace LW2Polishchuk
+namespace KMA.ProgrammingInCSharp.LW2Polishchuk
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

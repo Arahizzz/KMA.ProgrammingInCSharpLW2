@@ -13,7 +13,7 @@ namespace KMA.ProgrammingInCSharp.LW2Polishchuk.Controls
             new PropertyMetadata(null)
         );
         
-        public static DependencyProperty TextProperty = DependencyProperty.Register
+        public static readonly DependencyProperty TextProperty = DependencyProperty.Register
         (
             "Text",
             typeof(string),
@@ -21,7 +21,7 @@ namespace KMA.ProgrammingInCSharp.LW2Polishchuk.Controls
             new PropertyMetadata(null)
         );
         
-        public static DependencyProperty MarginProperty = DependencyProperty.Register
+        public new static readonly DependencyProperty MarginProperty = DependencyProperty.Register
         (
             "Margin",
             typeof(string),

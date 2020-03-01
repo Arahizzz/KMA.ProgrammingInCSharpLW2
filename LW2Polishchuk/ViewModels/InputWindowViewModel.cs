@@ -1,15 +1,15 @@
 ﻿﻿using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Threading.Tasks;
-using System.Windows;
-using GalaSoft.MvvmLight.Command;
-using KMA.ProgrammingInCSharp.LW2Polishchuk.Models;
+ using System.Threading.Tasks;
+ using System.Windows;
+ using GalaSoft.MvvmLight.Command;
+ using KMA.ProgrammingInCSharp.LW2Polishchuk.Models;
 
-namespace KMA.ProgrammingInCSharp.LW2Polishchuk.ViewModels
+ namespace KMA.ProgrammingInCSharp.LW2Polishchuk.ViewModels
 {
     public class InputWindowViewModel : BaseViewModel
     {
+        #region Fields
+
         private string _name;
 
         private string _surname;
@@ -18,12 +18,14 @@ namespace KMA.ProgrammingInCSharp.LW2Polishchuk.ViewModels
 
         private DateTime _birthday = DateTime.Today;
 
-        private Person _person;
-
         private string _personInfo;
 
         private RelayCommand<object> _proccedCommand;
 
+        #endregion
+
+
+        #region Properties
 
         public RelayCommand<object> ProceedCommand
         {
@@ -73,16 +75,6 @@ namespace KMA.ProgrammingInCSharp.LW2Polishchuk.ViewModels
             }
         }
 
-        private Person Person
-        {
-            get => _person;
-            set
-            {
-                _person = value;
-                OnPropertyChanged();
-            }
-        }
-
         public string PersonInfo
         {
             get => _personInfo;
@@ -92,6 +84,10 @@ namespace KMA.ProgrammingInCSharp.LW2Polishchuk.ViewModels
                 OnPropertyChanged();
             }
         }
+        
+        private Person Person { get; set; }
+
+        #endregion
 
 
         private bool AllFieldsNotEmpty()

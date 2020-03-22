@@ -26,7 +26,7 @@ namespace KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels
         public InputWindowViewModel(ObservableCollection<PersonViewModel> users)
         {
             Users = users;
-            ProceedCommand = new RelayCommand<Window>(Proceed, _ => AllFieldsNotEmpty());
+            ProceedCommand = new RelayCommand<Window>(w => Proceed(w), _ => AllFieldsNotEmpty());
         }
 
         #endregion

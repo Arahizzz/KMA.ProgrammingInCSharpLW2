@@ -25,12 +25,10 @@
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="File">
                 <MenuItem Header="Save" Command="{Binding SaveUsersCommand}"/>
-                <MenuItem Header="Save As" />
-                <MenuItem Header="Load" />
             </MenuItem>
         </Menu>
         <DataGrid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" AutoGenerateColumns="False"
-                  ItemsSource="{Binding Users, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding FilteredUsers, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}"
                   SelectedIndex="{Binding Path=SelectedUser, Mode=TwoWay}"
                   SelectedCellsChanged="DataGrid_OnSelectedCellsChanged"
                   >
@@ -65,14 +63,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="0.175*" />
                 </Grid.ColumnDefinitions>
-                <controls:NamedTextBox Grid.Row="0" Grid.Column="0" Label="Name:" />
-                <controls:NamedTextBox Grid.Row="0" Grid.Column="1" Label="Surname:" />
+                <controls:NamedTextBox Grid.Row="0" Grid.Column="0" Label="Name:" Text="{Binding Name, Mode=OneWayToSource}" />
+                <controls:NamedTextBox Grid.Row="0" Grid.Column="1" Label="Surname:" Text="{Binding Surname, Mode=OneWayToSource}" />
                 <controls:NamedCheckBox Grid.Row="0" Grid.Column="2" Label="Is Adult:" />
-                <controls:NamedTextBox Grid.Row="2" Grid.Column="0" Label="Email:" />
-                <controls:NamedTextBox Grid.Row="2" Grid.Column="1" Label="Birth Date:" />
-                <controls:NamedCheckBox Grid.Row="2" Grid.Column="2" Label="Is Birthday:" />
-                <controls:NamedTextBox Grid.Row="4" Grid.Column="0" Label="Sun Sign:" />
-                <controls:NamedTextBox Grid.Row="4" Grid.Column="1" Label="Chinese Sign:" />
+                <controls:NamedTextBox Grid.Row="2" Grid.Column="0" Label="Email:" Text="{Binding Email, Mode=OneWayToSource}"/>
+                <controls:NamedTextBox Grid.Row="2" Grid.Column="1" Label="Birth Date:" Text="{Binding DateTime, Mode=OneWayToSource}"/>
+                <controls:NamedCheckBox Grid.Row="2" Grid.Column="2" Label="Is Birthday:" IsChecked="{Binding IsBirthDay, Mode=OneWayToSource}"/>
+                <controls:NamedTextBox Grid.Row="4" Grid.Column="0" Label="Chinese Sign:" Text="{Binding ChineseSignString, Mode=OneWayToSource}"/>
+                <controls:NamedTextBox Grid.Row="4" Grid.Column="1" Label="Sun Sign:" Text="{Binding SunSignString, Mode=OneWayToSource}"/>
+                <Button Grid.Row="4" Grid.Column="2" Content="Apply" Command="{Binding FilterUsersCommand}"></Button>
             </Grid>
         </GroupBox>
     </Grid>

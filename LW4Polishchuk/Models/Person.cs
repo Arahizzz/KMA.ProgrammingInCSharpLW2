@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Exceptions;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Exceptions;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Models
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Models
 {
     [Serializable]
     internal class Person

@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Controls
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Controls
 {
     public partial class NamedTextBox : UserControl
     {

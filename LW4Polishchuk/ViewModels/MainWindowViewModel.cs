@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Managers;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Managers;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
 {
     internal class MainWindowViewModel : BaseViewModel, ILoaderOwner
     {

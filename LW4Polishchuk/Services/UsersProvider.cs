@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Manangers;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Models;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Manangers;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Models;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Services
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Services
 {
     internal static class UsersProvider
     {

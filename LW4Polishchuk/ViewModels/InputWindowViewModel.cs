@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight.Command;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Managers;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Models;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Managers;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Models;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
 {
     internal class InputWindowViewModel : BaseViewModel
     {

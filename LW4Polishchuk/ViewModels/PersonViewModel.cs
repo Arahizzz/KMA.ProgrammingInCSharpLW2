@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Models;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Models;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
 {
     internal class PersonViewModel : BaseViewModel
     {

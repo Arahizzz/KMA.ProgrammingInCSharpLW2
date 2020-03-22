@@ -4,7 +4,7 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UseWPF>true</UseWPF>
-        <RootNamespace>KMA.ProgrammingInCSharp.LW3Polishchuk</RootNamespace>
+        <RootNamespace>KMA.ProgrammingInCSharp.LW4Polishchuk</RootNamespace>
         <AssemblyName>LW4Polishchuk</AssemblyName>
     </PropertyGroup>
 

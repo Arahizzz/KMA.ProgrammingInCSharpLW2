@@ -5,13 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight.CommandWpf;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Exceptions;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Managers;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Models;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Services;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Views;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Exceptions;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Managers;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Models;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Services;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Views;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
 {
     internal class UserListViewModel : BaseViewModel
     {

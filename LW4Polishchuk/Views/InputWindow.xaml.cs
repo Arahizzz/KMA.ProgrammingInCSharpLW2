@@ -1,9 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Views
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Views
 {
     public partial class InputWindow : Window
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.Services;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.Services;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Manangers
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Manangers
 {
     internal static class SerializationManager
     {

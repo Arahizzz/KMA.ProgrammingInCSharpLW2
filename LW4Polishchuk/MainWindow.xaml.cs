@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

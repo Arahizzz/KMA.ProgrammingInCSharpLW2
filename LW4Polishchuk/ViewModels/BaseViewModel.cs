@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
 {
     internal abstract class BaseViewModel : INotifyPropertyChanged
     {

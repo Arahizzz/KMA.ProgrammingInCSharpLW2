@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk
 {
     internal interface ILoaderOwner : INotifyPropertyChanged
     {

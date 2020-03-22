@@ -2,9 +2,9 @@
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Markup;
-using KMA.ProgrammingInCSharp.LW3Polishchuk.ViewModels;
+using KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Views
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Views
 {
     public partial class UserList : Page
     {

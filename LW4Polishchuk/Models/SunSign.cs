@@ -1,4 +1,4 @@
-﻿namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Models
+﻿namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Models
 {
     internal enum SunSign
     {

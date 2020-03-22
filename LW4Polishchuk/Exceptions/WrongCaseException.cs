@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Exceptions
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Exceptions
 {
     internal class WrongCaseException : ArgumentException
     {

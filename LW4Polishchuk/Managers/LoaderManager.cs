@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Managers
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Managers
 {
     internal class LoaderManager
     {

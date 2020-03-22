@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk
 {
     /// <summary>
     /// Interaction logic for App.xaml

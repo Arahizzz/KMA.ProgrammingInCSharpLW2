@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace KMA.ProgrammingInCSharp.LW3Polishchuk.Services
+namespace KMA.ProgrammingInCSharp.LW4Polishchuk.Services
 {
     internal static class FileFolderHelper
     {

@@ -23,6 +23,7 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
         private int _selectedUser;
         private RelayCommand<object> _deleteUserCommand;
         private RelayCommand<object> _addUserCommand;
+        private RelayCommand<object> _saveUserCommand;
         private object _lock = new object();
 
         #region Filters
@@ -30,7 +31,7 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
         private string _name;
         private string _surname;
         private string _email;
-        private string _dateTime;
+        private string _dateFilter;
         private bool? _isAdult;
         private bool? _isBirthday;
         private string _sunSignString;
@@ -45,6 +46,9 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
             Task.Run(LoadUsers);
         }
 
+        #region Fields
+
+        
         private ObservableCollection<PersonViewModel> Users
         {
             get => _users;
@@ -85,10 +89,10 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
             set => _isBirthday = value;
         }
 
-        public string DateTime
+        public string DateFilter
         {
-            private get => _dateTime;
-            set => _dateTime = value;
+            private get => _dateFilter;
+            set => _dateFilter = value;
         }
 
         public string ChineseSignString
@@ -106,7 +110,7 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
         public ObservableCollection<PersonViewModel> FilteredUsers
         {
             get => _filteredUsers;
-            set
+            private set
             {
                 _filteredUsers = value;
                 OnPropertyChanged();
@@ -136,13 +140,15 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
 
         public RelayCommand<object> SaveUsersCommand
         {
-            get => _addUserCommand ??= new RelayCommand<object>(_ => AddUser());
+            get => _saveUserCommand ??= new RelayCommand<object>(_ => Save());
         }
         
         public RelayCommand<object> FilterUsersCommand
         {
             get => _filterUserCommand ??= new RelayCommand<object>(_ => FilterUsers());
         }
+        
+        #endregion
 
         private void DeleteUser()
         {
@@ -150,11 +156,11 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
             FilteredUsers.RemoveAt(SelectedUser);
         }
 
-        private void AddUser()
+        private async void AddUser()
         {
             var addUserWindow = new InputWindow(Users);
             addUserWindow.ShowDialog();
-            FilterUsers();
+            await FilterUsers();
             SelectedUser = FilteredUsers.Count - 1;
         }
 
@@ -165,9 +171,9 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
             LoaderManager.Instance.HideLoader();
         }
 
-        private async void FilterUsers()
+        private Task FilterUsers()
         {
-            await Task.Run(() =>
+            return Task.Run(() =>
             {
                 try
                 {
@@ -183,11 +189,11 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
                         users = users.Where(s => s.Surname.Contains(Surname));
                     if (!string.IsNullOrEmpty(Email))
                         users = users.Where(s => s.Email.Contains(Email));
-                    if (!string.IsNullOrEmpty(DateTime))
+                    if (!string.IsNullOrEmpty(DateFilter))
                         users = users.Where(s =>
                         {
                             var date = s.BirthDate;
-                            if (System.DateTime.TryParse(DateTime, out var filter))
+                            if (System.DateTime.TryParse(DateFilter, out var filter))
                                 return date.Year == filter.Year && date.Month == filter.Month && date.Day == filter.Day;
                             else throw new FailedToParseException(typeof(DateTime));
                         });

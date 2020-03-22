@@ -66,7 +66,7 @@
                 <controls1:NamedTextBox Grid.Row="0" Grid.Column="1" Label="Surname:" Text="{Binding Surname, Mode=OneWayToSource}" />
                 <controls1:NamedCheckBox Grid.Row="0" Grid.Column="2" Label="Is Adult:" IsChecked="{Binding IsAdult, Mode=OneWayToSource}"/>
                 <controls1:NamedTextBox Grid.Row="2" Grid.Column="0" Label="Email:" Text="{Binding Email, Mode=OneWayToSource}"/>
-                <controls1:NamedTextBox Grid.Row="2" Grid.Column="1" Label="Birth Date:" Text="{Binding DateTime, Mode=OneWayToSource}"/>
+                <controls1:NamedTextBox Grid.Row="2" Grid.Column="1" Label="Birth Date:" Text="{Binding DateFilter, Mode=OneWayToSource}"/>
                 <controls1:NamedCheckBox Grid.Row="2" Grid.Column="2" Label="Is Birthday:" IsChecked="{Binding IsBirthDay, Mode=OneWayToSource}"/>
                 <controls1:NamedTextBox Grid.Row="4" Grid.Column="0" Label="Chinese Sign:" Text="{Binding ChineseSignString, Mode=OneWayToSource}"/>
                 <controls1:NamedTextBox Grid.Row="4" Grid.Column="1" Label="Sun Sign:" Text="{Binding SunSignString, Mode=OneWayToSource}"/>

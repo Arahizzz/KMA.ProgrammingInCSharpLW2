@@ -13,7 +13,7 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels
             _person = person;
         }
 
-        public Person Person => _person;
+        internal Person Person => _person;
 
         public string Name
         {

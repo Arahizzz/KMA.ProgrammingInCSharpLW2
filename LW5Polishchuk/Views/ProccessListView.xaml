@@ -16,6 +16,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*" />
@@ -28,17 +30,19 @@
                   SelectedIndex="{Binding Path=SelectedProccess, Mode=TwoWay}"
         >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name, IsAsync=True}" />
-                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id, IsAsync=True}" />
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}" />
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}" />
                 <DataGridTextColumn Header="CPU" Width="50" Binding="{Binding Cpu, IsAsync=True}" />
                 <DataGridTextColumn Header="RAM" Width="50" Binding="{Binding Ram, IsAsync=True}" />
-                <DataGridTextColumn Header="Threads" Width="50" Binding="{Binding Threads, IsAsync=True}" />
-                <DataGridTextColumn Header="User" Width="150" Binding="{Binding User, IsAsync=True}" />
-                <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path, IsAsync=True}" />
-                <DataGridTextColumn Header="Started at:" Width="150" Binding="{Binding StartTime, IsAsync=True}" />
+                <DataGridTextColumn Header="Threads" Width="50" Binding="{Binding Threads}" />
+                <DataGridTextColumn Header="User" Width="150" Binding="{Binding User}" />
+                <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path}" />
+                <DataGridTextColumn Header="Started at:" Width="150" Binding="{Binding StartTime}" />
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Column="1" Grid.Row="3" Content="Add User" Command="{Binding AddUserCommand}"/>
-        <Button Grid.Column="2" Grid.Row="3" Content="Delete User" Command="{Binding DeleteUserCommand}" />
+        <Button Grid.Column="1" Grid.Row="3" Content="View Modules" Command="{Binding AddUserCommand}"/>
+        <Button Grid.Column="2" Grid.Row="3" Content="View Threads" Command="{Binding AddUserCommand}"/>
+        <Button Grid.Column="1" Grid.Row="5" Content="Kill process" Command="{Binding DeleteUserCommand}" />
+        <Button Grid.Column="2" Grid.Row="5" Content="Open Folder" Command="{Binding DeleteUserCommand}" />
     </Grid>
 </Page>

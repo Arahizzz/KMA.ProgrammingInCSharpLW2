@@ -30,14 +30,14 @@
                   SelectedIndex="{Binding Path=SelectedProcess, Mode=TwoWay}"
         >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}" />
-                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="CPU" Width="50" Binding="{Binding Cpu, IsAsync=True}" />
-                <DataGridTextColumn Header="RAM" Width="50" Binding="{Binding Ram, IsAsync=True}" />
-                <DataGridTextColumn Header="Threads" Width="50" Binding="{Binding Threads}" />
-                <DataGridTextColumn Header="User" Width="150" Binding="{Binding User}" />
-                <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path}" />
-                <DataGridTextColumn Header="Started at:" Width="150" Binding="{Binding StartTime}" />
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name, Mode=OneWay}" />
+                <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id, Mode=OneWay}" />
+                <DataGridTextColumn Header="CPU" Width="50" Binding="{Binding Cpu, Mode=OneWay, IsAsync=True}" />
+                <DataGridTextColumn Header="RAM" Width="50" Binding="{Binding Ram, Mode=OneWay, IsAsync=True}" />
+                <DataGridTextColumn Header="Threads" Width="50" Binding="{Binding Threads, Mode=OneWay}" />
+                <DataGridTextColumn Header="User" Width="150" Binding="{Binding User, Mode=OneWay}" />
+                <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path, Mode=OneWay}" />
+                <DataGridTextColumn Header="Started at:" Width="150" Binding="{Binding StartTime, Mode=OneWay}" />
             </DataGrid.Columns>
         </DataGrid>
         <Button Grid.Column="1" Grid.Row="3" Content="View Modules" Command="{Binding ViewModules}"/>

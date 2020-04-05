@@ -11,9 +11,9 @@
             AutoGenerateColumns="False"
             ItemsSource="{Binding ProcessModules, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding ModuleName}" />
-                <DataGridTextColumn Header="Adress" Width="200" Binding="{Binding EntryPointAddress}" />
-                <DataGridTextColumn Header="File Name" Width="200" Binding="{Binding FileName}" />
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding ModuleName, Mode=OneWay}" />
+                <DataGridTextColumn Header="Adress" Width="200" Binding="{Binding EntryPointAddress, Mode=OneWay}" />
+                <DataGridTextColumn Header="File Name" Width="200" Binding="{Binding FileName, Mode=OneWay}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

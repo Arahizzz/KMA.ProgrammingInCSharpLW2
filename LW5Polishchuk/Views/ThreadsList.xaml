@@ -9,10 +9,10 @@
         <DataGrid AutoGenerateColumns="False" 
             ItemsSource="{Binding ProcessThreads, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="150" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="State" Width="150" Binding="{Binding ThreadState}" />
-                <DataGridTextColumn Header="Start Time" Width="200" Binding="{Binding StartTime}" />
-                <DataGridTextColumn Header="CPU Time" Width="200" Binding="{Binding TotalProcessorTime}" />
+                <DataGridTextColumn Header="ID" Width="150" Binding="{Binding Id, Mode=OneWay}" />
+                <DataGridTextColumn Header="State" Width="150" Binding="{Binding ThreadState, Mode=OneWay}" />
+                <DataGridTextColumn Header="Start Time" Width="200" Binding="{Binding StartTime, Mode=OneWay}" />
+                <DataGridTextColumn Header="CPU Time" Width="200" Binding="{Binding TotalProcessorTime, Mode=OneWay}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

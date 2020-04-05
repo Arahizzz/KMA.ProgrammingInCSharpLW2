@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <DataGrid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" AutoGenerateColumns="False"
                   ItemsSource="{Binding Processes, NotifyOnSourceUpdated=True, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedIndex="{Binding Path=SelectedProcess, Mode=TwoWay}"
+                  SelectedItem="{Binding Path=SelectedProcess, Mode=TwoWay}"
         >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name, Mode=OneWay}" />

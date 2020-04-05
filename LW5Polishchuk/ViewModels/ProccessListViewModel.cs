@@ -21,7 +21,7 @@ namespace LW5Polishchuk.ViewModels
         private RelayCommand<object> _viewModules;
         private RelayCommand<object> _killProcess;
         private RelayCommand<object> _openFolder;
-        private int _selectedProcess = -1;
+        private ProcessViewModel _selectedProcess = null;
 
         public ProccessListViewModel()
         {
@@ -34,7 +34,7 @@ namespace LW5Polishchuk.ViewModels
             _refreshInfoTimer.AutoReset = true;
             _refreshInfoTimer.Enabled = true;
         }
-        public int SelectedProcess
+        public ProcessViewModel SelectedProcess
         {
             get => _selectedProcess;
             set
@@ -50,25 +50,25 @@ namespace LW5Polishchuk.ViewModels
         public RelayCommand<object> ViewThreads
         {
             get => _viewThreads ??= new RelayCommand<object>(
-                _ => ShowThreads(), _ => SelectedProcess != -1);
+                _ => ShowThreads(), _ => SelectedProcess != null);
         }
 
         public RelayCommand<object> ViewModules
         {
             get => _viewModules ??= new RelayCommand<object>(
-                _ => ShowModules(), _ => SelectedProcess != -1);
+                _ => ShowModules(), _ => SelectedProcess != null);
         }
 
         public RelayCommand<object> KillProcess
         {
             get => _killProcess ??= new RelayCommand<object>(
-                _ => KillProc(), _ => SelectedProcess != -1);
+                _ => KillProc(), _ => SelectedProcess != null);
         }
 
         public RelayCommand<object> OpenFolder
         {
             get => _openFolder ??= new RelayCommand<object>(
-                _ => OpenExplorer(), _ => SelectedProcess != -1 && !string.IsNullOrEmpty(Processes[SelectedProcess].Path));
+                _ => OpenExplorer(), _ => SelectedProcess != null && !string.IsNullOrEmpty(SelectedProcess.Path));
         }
         
         public ObservableCollection<ProcessViewModel> Processes
@@ -86,7 +86,7 @@ namespace LW5Polishchuk.ViewModels
         {
             try
             {
-                var modules = Processes[SelectedProcess].Process.Modules;
+                var modules = SelectedProcess.Process.Modules;
                 var addUserWindow = new ModulesList(modules);
                 addUserWindow.ShowDialog();
             }
@@ -98,7 +98,7 @@ namespace LW5Polishchuk.ViewModels
 
         private void ShowThreads()
         {
-            var modules = Processes[SelectedProcess].Process.Threads;
+            var modules = SelectedProcess.Process.Threads;
             var addUserWindow = new ThreadsList(modules);
             addUserWindow.ShowDialog();
         }
@@ -107,10 +107,10 @@ namespace LW5Polishchuk.ViewModels
         {
             try
             {
-                var proc = Processes[SelectedProcess].Process;
+                var proc = SelectedProcess.Process;
                 if (!proc.CloseMainWindow())
                 {
-                    proc.Kill();
+                    proc.Kill(true);
                 }
             }
             catch
@@ -121,7 +121,7 @@ namespace LW5Polishchuk.ViewModels
 
         private void OpenExplorer()
         {
-            string args = string.Format("/e, /select, \"{0}\"", Processes[SelectedProcess].Path);
+            string args = string.Format("/e, /select, \"{0}\"", SelectedProcess.Path);
             ProcessStartInfo info = new ProcessStartInfo();
             info.FileName = "explorer";
             info.Arguments = args;

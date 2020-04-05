@@ -27,10 +27,11 @@
                   SelectedItem="{Binding Path=SelectedProcess, Mode=TwoWay}"
         >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name, Mode=OneWay}" />
+                <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Name, Mode=OneWay}" />
                 <DataGridTextColumn Header="ID" Width="50" Binding="{Binding Id, Mode=OneWay}" />
                 <DataGridTextColumn Header="CPU" Width="50" Binding="{Binding Cpu, Mode=OneWay, IsAsync=True}" />
                 <DataGridTextColumn Header="RAM" Width="50" Binding="{Binding Ram, Mode=OneWay, IsAsync=True}" />
+                <DataGridTextColumn Header="RAM%" Width="50" Binding="{Binding RamPercent, Mode=OneWay, IsAsync=True}" />
                 <DataGridTextColumn Header="Threads" Width="50" Binding="{Binding Threads, Mode=OneWay}" />
                 <DataGridTextColumn Header="User" Width="150" Binding="{Binding User, Mode=OneWay}" />
                 <DataGridTextColumn Header="Path" Width="150" Binding="{Binding Path, Mode=OneWay}" />

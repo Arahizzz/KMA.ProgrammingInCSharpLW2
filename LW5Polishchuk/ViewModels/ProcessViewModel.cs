@@ -7,6 +7,7 @@ namespace LW5Polishchuk.ViewModels
 {
     internal class ProcessViewModel : BaseViewModel, IEquatable<ProcessViewModel>
     {
+        private static long RamSize = (long)new PerformanceCounter("Memory", "Available MBytes").NextValue();
         private Process _process;
         private TimeSpan _prev = TimeSpan.Zero;
         private string _user = "Loading...";
@@ -25,6 +26,7 @@ namespace LW5Polishchuk.ViewModels
                 _process = value;
                 OnPropertyChanged("Cpu");
                 OnPropertyChanged("Ram");
+                OnPropertyChanged("RamPercent");
                 OnPropertyChanged("Threads");
             }
         }
@@ -52,6 +54,8 @@ namespace LW5Polishchuk.ViewModels
         }
 
         public long Ram => _process.WorkingSet64 / 1_000_000;
+
+        public float RamPercent => _process.WorkingSet64 / 1_000_000f / RamSize * 100;
 
         public int Threads => _process.Threads.Count;
 

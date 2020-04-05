@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         mc:Ignorable="d"
-        Title="Person Info" Height="600" Width="1000">
+        Title="Task Manager" Height="600" Width="1000">
     <Grid>
         <Frame Source="Views/ProccessListView.xaml" />
         <fa:ImageAwesome Icon="Refresh" Width="50" Height="50" Spin="True" Grid.ZIndex="2"

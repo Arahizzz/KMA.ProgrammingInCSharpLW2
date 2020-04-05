@@ -7,6 +7,10 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <PlatformTarget>AnyCPU</PlatformTarget>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
         <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />

@@ -32,6 +32,8 @@ namespace LW5Polishchuk.ViewModels
         private ObservableCollection<ProcessViewModel> _processes;
         private GalaSoft.MvvmLight.Command.RelayCommand<object> _viewThreads;
         private GalaSoft.MvvmLight.Command.RelayCommand<object> _viewModules;
+        private GalaSoft.MvvmLight.Command.RelayCommand<object> _killProcess;
+        private GalaSoft.MvvmLight.Command.RelayCommand<object> _openFolder;
         private int _selectedProcess = -1;
 
         public int SelectedProcess
@@ -40,7 +42,10 @@ namespace LW5Polishchuk.ViewModels
             set
             {
                 _selectedProcess = value;
-                OnPropertyChanged();
+                ViewThreads.RaiseCanExecuteChanged();
+                ViewModules.RaiseCanExecuteChanged();
+                KillProcess.RaiseCanExecuteChanged();
+                OpenFolder.RaiseCanExecuteChanged();
             }
         }
 
@@ -54,6 +59,18 @@ namespace LW5Polishchuk.ViewModels
         {
             get => _viewModules ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
                 _ => ShowModules(), _ => SelectedProcess != -1);
+        }
+
+        public GalaSoft.MvvmLight.Command.RelayCommand<object> KillProcess
+        {
+            get => _killProcess ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
+                _ => KillProc(), _ => SelectedProcess != -1);
+        }
+
+        public GalaSoft.MvvmLight.Command.RelayCommand<object> OpenFolder
+        {
+            get => _openFolder ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
+                _ => OpenExplorer(), _ => SelectedProcess != -1 && !string.IsNullOrEmpty(Processes[SelectedProcess].Path));
         }
 
         public ProccessListViewModel()
@@ -70,9 +87,16 @@ namespace LW5Polishchuk.ViewModels
 
         private void ShowModules()
         {
-            var modules = Processes[SelectedProcess].Process.Modules;
-            var addUserWindow = new ModulesList(modules);
-            addUserWindow.ShowDialog();
+            try
+            {
+                var modules = Processes[SelectedProcess].Process.Modules;
+                var addUserWindow = new ModulesList(modules);
+                addUserWindow.ShowDialog();
+            }
+            catch
+            {
+                MessageBox.Show("Cannot get modules of this process");
+            }
         }
 
         private void ShowThreads()
@@ -80,6 +104,31 @@ namespace LW5Polishchuk.ViewModels
             var modules = Processes[SelectedProcess].Process.Threads;
             var addUserWindow = new ThreadsList(modules);
             addUserWindow.ShowDialog();
+        }
+
+        private void KillProc()
+        {
+            try
+            {
+                var proc = Processes[SelectedProcess].Process;
+                if (!proc.CloseMainWindow())
+                {
+                    proc.Kill();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cannot kill this process");
+            }
+        }
+
+        private void OpenExplorer()
+        {
+            string args = string.Format("/e, /select, \"{0}\"", Processes[SelectedProcess].Path);
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "explorer";
+            info.Arguments = args;
+            Process.Start(info);
         }
 
         private void UpdateList(Object source, ElapsedEventArgs e)

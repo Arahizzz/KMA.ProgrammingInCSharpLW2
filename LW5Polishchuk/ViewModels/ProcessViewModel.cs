@@ -33,14 +33,21 @@ namespace LW5Polishchuk.ViewModels
 
         public string Name => _process.ProcessName;
 
-        public double Cpu
+        public string Cpu
         {
             get
             {
-                var curr = _process.TotalProcessorTime;
-                var delta = curr - _prev;
-                _prev = curr;
-                return delta.TotalMilliseconds / 100;
+                try
+                {
+                    var curr = _process.TotalProcessorTime;
+                    var delta = curr - _prev;
+                    _prev = curr;
+                    return (delta.TotalMilliseconds / 100).ToString();
+                }
+                catch
+                {
+                    return "NaN";
+                }
             }
         }
 
@@ -58,27 +65,59 @@ namespace LW5Polishchuk.ViewModels
             }
         }
 
-        public string Path => Process.MainModule?.FileName;
+        public string Path
+        {
+            get
+            {
+                try
+                {
+                    return Process.MainModule?.FileName;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
 
-        public DateTime StartTime => _process.StartTime;
+        public DateTime? StartTime
+        {
+            get
+            {
+                try
+                {
+                    return Process.StartTime;
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+        }
         public bool Equals(ProcessViewModel other) => Id.Equals(other?.Id);
 
         public void GetInfo()
         {
-            string query = "Select * From Win32_Process Where ProcessID = " + Process.Id;
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
-            ManagementObjectCollection processList = searcher.Get();
-
-            foreach (ManagementObject obj in processList)
+            try
             {
-                string[] argList = new string[] { string.Empty, string.Empty };
-                int returnVal = Convert.ToInt32(obj.InvokeMethod("GetOwner", argList));
-                if (returnVal == 0)
+                string query = "Select * From Win32_Process Where ProcessID = " + Process.Id;
+                ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
+                ManagementObjectCollection processList = searcher.Get();
+
+                foreach (ManagementObject obj in processList)
                 {
-                    // return DOMAIN\user
-                    User = argList[1] + "\\" + argList[0];
-                    return;
+                    string[] argList = new string[] { string.Empty, string.Empty };
+                    int returnVal = Convert.ToInt32(obj.InvokeMethod("GetOwner", argList));
+                    if (returnVal == 0)
+                    {               
+                        User = argList[1] + "\\" + argList[0];
+                        return;
+                    }
                 }
+            }
+            catch
+            {
+                User = "NO OWNER";
             }
 
             User = "NO OWNER";

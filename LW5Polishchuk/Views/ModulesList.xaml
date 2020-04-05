@@ -5,13 +5,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:LW5Polishchuk.Views"
         mc:Ignorable="d"
-        Title="ModulesList" Height="450" Width="800">
+        Title="Modules List" Height="450" Width="800">
     <Grid>
         <DataGrid 
-            ItemsSource="{Binding Processes, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
-            <DataGridTextColumn Header="Name" Width="200" Binding="{Binding ModuleName}" />
-            <DataGridTextColumn Header="Address" Width="50" Binding="{Binding BaseAdress}" />
-            <DataGridTextColumn Header="File Name" Width="50" Binding="{Binding FileName}" />
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding ProcessModules, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="200" Binding="{Binding ModuleName}" />
+                <DataGridTextColumn Header="Adress" Width="200" Binding="{Binding EntryPointAddress}" />
+                <DataGridTextColumn Header="File Name" Width="200" Binding="{Binding FileName}" />
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Window>

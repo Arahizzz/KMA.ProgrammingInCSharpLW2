@@ -4,11 +4,11 @@ namespace LW5Polishchuk.ViewModels
 {
     internal class ModuleListViewModel : BaseViewModel
     {
-        public ProcessModuleCollection Modules { get; }
+        public ProcessModuleCollection ProcessModules { get; }
 
         public ModuleListViewModel(ProcessModuleCollection collection)
         {
-            Modules = collection;
+            ProcessModules = collection;
         }
     }
 }

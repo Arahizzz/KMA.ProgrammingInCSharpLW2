@@ -5,14 +5,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:LW5Polishchuk.Views"
         mc:Ignorable="d"
-        Title="ThreadsList" Height="450" Width="800">
+        Title="Threads List" Height="450" Width="800">
     <Grid>
-        <DataGrid ItemsSource="{Binding ProcessThreads, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
+        <DataGrid AutoGenerateColumns="False" 
+            ItemsSource="{Binding ProcessThreads, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="200" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="State" Width="50" Binding="{Binding ThreadState}" />
-                <DataGridTextColumn Header="Start Time" Width="50" Binding="{Binding StartTime, IsAsync=True}" />
-                <DataGridTextColumn Header="CPU Time" Width="50" Binding="{Binding TotalProcessorTime, IsAsync=True}" />
+                <DataGridTextColumn Header="ID" Width="150" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="State" Width="150" Binding="{Binding ThreadState}" />
+                <DataGridTextColumn Header="Start Time" Width="200" Binding="{Binding StartTime}" />
+                <DataGridTextColumn Header="CPU Time" Width="200" Binding="{Binding TotalProcessorTime}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

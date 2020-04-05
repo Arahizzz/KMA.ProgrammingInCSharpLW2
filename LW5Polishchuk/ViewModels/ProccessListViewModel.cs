@@ -74,7 +74,7 @@ namespace LW5Polishchuk.ViewModels
         public ObservableCollection<ProcessViewModel> Processes
         {
             get => _processes;
-            set
+            private set
             {
                 _processes = value;
                 OnPropertyChanged();

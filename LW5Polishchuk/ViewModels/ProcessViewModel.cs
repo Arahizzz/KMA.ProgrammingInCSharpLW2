@@ -14,7 +14,7 @@ namespace LW5Polishchuk.ViewModels
         public ProcessViewModel(Process process)
         {
             _process = process;
-            Task.Run(GetInfo);
+            Task.Run(GetUserInfo);
         }
 
         public Process Process
@@ -96,7 +96,7 @@ namespace LW5Polishchuk.ViewModels
         }
         public bool Equals(ProcessViewModel other) => Id.Equals(other?.Id);
 
-        private void GetInfo()
+        private void GetUserInfo()
         {
             try
             {

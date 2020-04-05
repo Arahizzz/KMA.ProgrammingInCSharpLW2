@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using KMA.ProgrammingInCSharp.LW4Polishchuk.ViewModels;
 
-namespace KMA.ProgrammingInCSharp.LW4Polishchuk
+namespace LW5Polishchuk
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -11,7 +10,6 @@ namespace KMA.ProgrammingInCSharp.LW4Polishchuk
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
         }
     }
 }

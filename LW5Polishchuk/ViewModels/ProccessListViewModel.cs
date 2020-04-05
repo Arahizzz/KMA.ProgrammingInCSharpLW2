@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Threading;
-using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Command;
 using LW5Polishchuk.Views;
 
 namespace LW5Polishchuk.ViewModels
 {
     internal class ProccessListViewModel : BaseViewModel
     {
-        public ObservableCollection<ProcessViewModel> Processes
-        {
-            get => _processes;
-            set
-            {
-                _processes = value;
-                OnPropertyChanged();
-            }
-        }
-
+        private static readonly ProccessEqual cmp = new ProccessEqual();
         private readonly Timer _updateListTimer = new Timer(5000);
         private readonly Timer _refreshInfoTimer = new Timer(2000);
         private ObservableCollection<ProcessViewModel> _processes;
-        private GalaSoft.MvvmLight.Command.RelayCommand<object> _viewThreads;
-        private GalaSoft.MvvmLight.Command.RelayCommand<object> _viewModules;
-        private GalaSoft.MvvmLight.Command.RelayCommand<object> _killProcess;
-        private GalaSoft.MvvmLight.Command.RelayCommand<object> _openFolder;
+        private RelayCommand<object> _viewThreads;
+        private RelayCommand<object> _viewModules;
+        private RelayCommand<object> _killProcess;
+        private RelayCommand<object> _openFolder;
         private int _selectedProcess = -1;
 
+        public ProccessListViewModel()
+        {
+            Processes = new ObservableCollection<ProcessViewModel>(Process.GetProcesses()
+                .Select(p => new ProcessViewModel(p)));
+            _updateListTimer.Elapsed += UpdateList;
+            _updateListTimer.AutoReset = true;
+            _updateListTimer.Enabled = true;
+            _refreshInfoTimer.Elapsed += RefreshList;
+            _refreshInfoTimer.AutoReset = true;
+            _refreshInfoTimer.Enabled = true;
+        }
         public int SelectedProcess
         {
             get => _selectedProcess;
@@ -49,41 +47,40 @@ namespace LW5Polishchuk.ViewModels
             }
         }
 
-        public GalaSoft.MvvmLight.Command.RelayCommand<object> ViewThreads
+        public RelayCommand<object> ViewThreads
         {
-            get => _viewThreads ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
+            get => _viewThreads ??= new RelayCommand<object>(
                 _ => ShowThreads(), _ => SelectedProcess != -1);
         }
 
-        public GalaSoft.MvvmLight.Command.RelayCommand<object> ViewModules
+        public RelayCommand<object> ViewModules
         {
-            get => _viewModules ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
+            get => _viewModules ??= new RelayCommand<object>(
                 _ => ShowModules(), _ => SelectedProcess != -1);
         }
 
-        public GalaSoft.MvvmLight.Command.RelayCommand<object> KillProcess
+        public RelayCommand<object> KillProcess
         {
-            get => _killProcess ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
+            get => _killProcess ??= new RelayCommand<object>(
                 _ => KillProc(), _ => SelectedProcess != -1);
         }
 
-        public GalaSoft.MvvmLight.Command.RelayCommand<object> OpenFolder
+        public RelayCommand<object> OpenFolder
         {
-            get => _openFolder ??= new GalaSoft.MvvmLight.Command.RelayCommand<object>(
+            get => _openFolder ??= new RelayCommand<object>(
                 _ => OpenExplorer(), _ => SelectedProcess != -1 && !string.IsNullOrEmpty(Processes[SelectedProcess].Path));
         }
-
-        public ProccessListViewModel()
+        
+        public ObservableCollection<ProcessViewModel> Processes
         {
-            Processes = new ObservableCollection<ProcessViewModel>(Process.GetProcesses()
-                .Select(p => new ProcessViewModel(p)));
-            _updateListTimer.Elapsed += UpdateList;
-            _updateListTimer.AutoReset = true;
-            _updateListTimer.Enabled = true;
-            _refreshInfoTimer.Elapsed += RefreshList;
-            _refreshInfoTimer.AutoReset = true;
-            _refreshInfoTimer.Enabled = true;
+            get => _processes;
+            set
+            {
+                _processes = value;
+                OnPropertyChanged();
+            }
         }
+        
 
         private void ShowModules()
         {
@@ -171,8 +168,6 @@ namespace LW5Polishchuk.ViewModels
                     dict[process.Id].Process = process;
             }
         }
-
-        private static readonly ProccessEqual cmp = new ProccessEqual();
 
         private class ProccessEqual : IEqualityComparer<Process>
         {

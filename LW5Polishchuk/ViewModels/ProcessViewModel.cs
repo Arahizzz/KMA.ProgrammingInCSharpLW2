@@ -96,7 +96,7 @@ namespace LW5Polishchuk.ViewModels
         }
         public bool Equals(ProcessViewModel other) => Id.Equals(other?.Id);
 
-        public void GetInfo()
+        private void GetInfo()
         {
             try
             {
